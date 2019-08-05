@@ -40,6 +40,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void showMenu() {
         invalidateOptionsMenu();
+            Log.d("TAG", "showMenu: ");
     }
 
     @Override
@@ -69,10 +70,13 @@ public class ListActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.list_activity_menu,menu);
         MenuItem menuItem = menu.findItem(R.id.insert_menu);
+        Log.d("TAG", "onCreateOptionsMenu: "+FirebaseUtil.isAdmin);
+            menuItem.setVisible(false);
         if (FirebaseUtil.isAdmin) {
             menuItem.setVisible(true);
+            Log.d("TAG", "onCreateOptionsMenu: second");
         } else {
-            menuItem.setVisible(false);
+            Log.d("TAG", "onCreateOptionsMenu: nothing");
         }
         return true;
     }
@@ -93,6 +97,5 @@ public class ListActivity extends AppCompatActivity {
         LinearLayoutManager dealLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rvDeals.setLayoutManager(dealLayoutManager);
         FirebaseUtil.attachListener();
-
     }
 }

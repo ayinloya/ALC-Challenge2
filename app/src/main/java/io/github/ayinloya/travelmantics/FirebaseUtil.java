@@ -1,6 +1,7 @@
 package io.github.ayinloya.travelmantics;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -72,6 +73,7 @@ public class FirebaseUtil {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 FirebaseUtil.isAdmin = true;
+                Log.d("TAG", "onChildAdded: is admin");
                 caller.showMenu();
             }
 
